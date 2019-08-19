@@ -28,7 +28,6 @@ variable "vault_asg_name" {
 variable "subnet_ids" {
   description = "The subnet IDs into which the ELB should be deployed. You will typically want to deploy the ELB into public subnets so your Vault cluster can run in private subnets. At least one of var.subnet_ids or var.availability_zones must be non-empty."
   type        = list(string)
-  default     = []
 }
 
 variable "create_dns_entry" {

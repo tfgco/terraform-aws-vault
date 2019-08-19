@@ -238,9 +238,9 @@ function generate_vault_config {
   local -r auto_unseal_kms_key_id="${12}"
   local -r auto_unseal_kms_key_region="${13}"
   local -r auto_unseal_endpoint="${14}"
-  local -r enable_dynamo_backend="${11}"
-  local -r dynamo_region="${12}"
-  local -r dynamo_table="${13}"
+  local -r enable_dynamo_backend="${15}"
+  local -r dynamo_region="${16}"
+  local -r dynamo_table="${17}"
   local -r config_path="$config_dir/$VAULT_CONFIG_FILE"
 
   local instance_ip_address
@@ -538,7 +538,6 @@ function run {
         s3_bucket_region="$2"
         shift
         ;;
-<<<<<<< HEAD
       --agent)
         agent="true"
         ;;
@@ -640,7 +639,6 @@ function run {
   fi
 
   assert_is_installed "systemctl"
-  assert_is_installed "supervisorctl"
   assert_is_installed "aws"
   assert_is_installed "curl"
   assert_is_installed "jq"
@@ -706,13 +704,13 @@ function run {
         "$enable_s3_backend" \
         "$s3_bucket" \
         "$s3_bucket_region" \
-        "$enable_dynamo_backend" \
-        "$dynamo_region" \
-        "$dynamo_table" \
         "$enable_auto_unseal" \
         "$auto_unseal_kms_key_id" \
         "$auto_unseal_kms_key_region" \
-        "$auto_unseal_endpoint"
+        "$auto_unseal_endpoint" \
+        "$enable_dynamo_backend" \
+        "$dynamo_region" \
+        "$dynamo_table"
     fi
   fi
 

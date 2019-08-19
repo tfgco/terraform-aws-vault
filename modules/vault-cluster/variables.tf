@@ -192,11 +192,6 @@ variable "enable_s3_backend" {
   default     = false
 }
 
-variable "enable_dynamo_backend" {
-  description = "Whether to configure a DynamoDB storage backend (No Consul)"
-  default     = false
-}
-
 variable "s3_bucket_name" {
   description = "The name of the S3 bucket to create and use as a storage backend. Only used if 'enable_s3_backend' is set to true."
   default     = ""
@@ -227,6 +222,11 @@ variable "enabled_metrics" {
   description = "List of autoscaling group metrics to enable."
   type        = list(string)
   default     = []
+}
+
+variable "enable_dynamo_backend" {
+  description = "Whether to configure a DynamoDB storage backend (No Consul)"
+  default     = false
 }
 
 variable "dynamo_read_capacity" {
